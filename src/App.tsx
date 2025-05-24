@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { Home } from './pages/Home';
+import { SearchPage } from './pages/SearchPage';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+type Page = 'home' | 'search';
 
-// export default App;
+function App() {
+  const [page, setPage] = useState<Page>('home');
+
+  return (
+    <>
+      <Header onChangePage={setPage} currentPage={page} />
+      {page === 'home' && <Home />}
+      {page === 'search' && <SearchPage />}
+      <Footer />
+    </>
+  );
+}
+
+export default App;
+
