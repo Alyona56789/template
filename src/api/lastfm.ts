@@ -48,5 +48,5 @@ export async function searchTracks(query: string) {
   const url = buildUrl({ method: 'track.search', params: { track: query } });
   const res = await fetch(url);
   const data = await res.json();
-  return data.results.trackmatches.track || [];
+  return data.results.trackmatches.track || [];//
 }
